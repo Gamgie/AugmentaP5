@@ -197,7 +197,7 @@ void personEntered (AugmentaPerson p) {
   //println("Person entered : "+ p.pid + "at ("+p.centroid.x+","+p.centroid.y+")");
   
   // [Sound]
-    if(activateSound){
+    if(activateSound && ding!=null){
     ding.rewind();
     ding.play();
   }
