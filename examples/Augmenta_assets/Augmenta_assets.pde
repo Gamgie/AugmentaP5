@@ -119,7 +119,6 @@ void draw() {
       int sliderWidth = 150;
       if (volume > 1){
         fill(255,0,0);
-        rect(xp, yp, sliderWidth, 5);
       } else if (volume > 0.8){
         fill(255,128,0); 
         rect(xp, yp, sliderWidth*volume, 5);
@@ -160,7 +159,7 @@ void draw() {
     canvas.noStroke(); // Without stroke
     // [Audioreaction] version
     if(activateSound){
-      canvas.ellipse(pos.x*canvas.width, pos.y*canvas.height, 15+cappedVolume*50, 15+cappedVolume*50);
+      canvas.ellipse(pos.x*canvas.width, pos.y*canvas.height, 15+volume*2, 15+volume*2);
     }else{
       canvas.ellipse(pos.x*canvas.width, pos.y*canvas.height, 20, 20); // 20 pixels in diameter
     }
