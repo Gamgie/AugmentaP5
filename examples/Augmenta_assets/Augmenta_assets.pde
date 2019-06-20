@@ -27,9 +27,6 @@ import processing.video.*;
 
 boolean mode3D = false;
 
-// [Audioreaction]
-Slider gainSlider;
-float gainSliderValue;
 // [Sprites]
 PImage img;
 // [Sound]
@@ -105,7 +102,7 @@ void draw() {
   // [Audioreaction]
   // Compute the current audio volume
   if(activateSound){
-    gain = gainSliderValue;
+    gain = getGainSliderValue();
     volume = (mic.left.level()+mic.right.level())*gain/2;
     if (volume >1){
       cappedVolume = 1;

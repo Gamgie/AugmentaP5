@@ -21,6 +21,8 @@ Textfield portInput;
 Textlabel portInputLabel;
 Toggle tuioToggle;
 Textlabel tuioLabel;
+Slider gainSlider;
+Textlabel gainSliderLabel;
 
 // Manual scene size info
 int manualSceneX = 640; // default
@@ -101,6 +103,17 @@ void showGUI(boolean val) {
   
   tuioToggle.setVisible(val);
   tuioLabel.setVisible(val);
+  
+  gainSlider.setVisible(val);
+  gainSliderLabel.setVisible(val);
+  
+  gainSlider.setVisible(val);
+  gainSliderLabel.setVisible(val);
+}
+
+float getGainSliderValue() {
+
+  return gainSlider.getValue();
 }
 
 boolean changeSize(int a_width, int a_height) {
@@ -251,6 +264,17 @@ void setUI() {
       .setText("TUIO mode")
       .setPosition(34, 63)
       ;
+  
+  // Gain Slider
+  gainSlider = cp5.addSlider("changeGain")
+      .setPosition(60, 83)
+      .setSize(90,15)
+      .setLabel("")
+      .setValue(0);
+  gainSliderLabel = cp5.addTextlabel("labelGainSlider")
+      .setText("Mic Gain")
+      .setPosition(14, 85)
+      ;
 }
 // --------------------------------------
 
@@ -320,7 +344,13 @@ void saveSettings(String file){
 
 void loadSettings(String file){
   println("Loading from : "+file);
-  cp5.loadProperties(file);
+  try {
+    cp5.loadProperties(file);
+  }
+   catch(Exception e){
+    return;
+  }
+  
   // After load force the textfields callbacks
   List<Textfield> list = cp5.getAll(Textfield.class);
   for(Textfield b:list) {
